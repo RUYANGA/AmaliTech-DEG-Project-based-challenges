@@ -1,11 +1,12 @@
 # WatchTower
+
 This challenge is designed to test your understanding of observability — one of the most critical and often overlooked areas of DevOps engineering.
 
 ---
 
 ## 1. Business Context
 
-**Client:** Reyla Logistics  
+**Client:** Reyla Logistics
 **Industry:** Last-mile delivery operations
 
 ### The Problem
@@ -24,15 +25,16 @@ You are joining as their DevOps engineer. The services are already written. Your
 
 Three small services are provided in the [`app/`](./app/) directory:
 
-| Service | Port | What it does |
-|---|---|---|
-| `order-service` | 3001 | Creates and lists orders |
-| `tracking-service` | 3002 | Updates and returns delivery status |
-| `notification-service` | 3003 | Logs notification events |
+| Service                | Port | What it does                        |
+| ---------------------- | ---- | ----------------------------------- |
+| `order-service`        | 3001 | Creates and lists orders            |
+| `tracking-service`     | 3002 | Updates and returns delivery status |
+| `notification-service` | 3003 | Logs notification events            |
 
 Each service has a `/health` endpoint and a `/metrics` endpoint that exposes [Prometheus-compatible metrics](https://prometheus.io/docs/instrumenting/exposition_formats/).
 
 Run all three locally:
+
 ```bash
 docker compose up --build
 ```
@@ -48,6 +50,7 @@ Do not change the business logic of any service. You may add environment variabl
 **Deliverable:** A `docker-compose.yml` that runs the entire stack together.
 
 Requirements:
+
 - All three app services must start with `docker compose up`.
 - Each service must have its port mapped to the host for local testing.
 - Services must be on a shared Docker network so they can communicate by service name.
@@ -60,6 +63,7 @@ Requirements:
 **Deliverable:** Prometheus added to the `docker-compose.yml` and configured to scrape all three services.
 
 Requirements:
+
 - Add a **Prometheus** container to your Compose file.
 - Write a `prometheus.yml` configuration file that scrapes the `/metrics` endpoint of each service every 15 seconds.
 - Prometheus UI must be accessible at `http://localhost:9090`.
@@ -72,6 +76,7 @@ Requirements:
 **Deliverable:** Grafana added to the Compose stack with a pre-built dashboard.
 
 Requirements:
+
 - Add a **Grafana** container to your Compose file. It must use Prometheus as its data source.
 - Grafana must be accessible at `http://localhost:3000`.
 - Create a dashboard (exported as JSON in `grafana/dashboards/`) that displays **at minimum**:
@@ -88,13 +93,14 @@ Requirements:
 
 Write alerting rules for the following conditions:
 
-| Alert Name | Condition | Severity |
-|---|---|---|
-| `ServiceDown` | Any service's `/health` returns non-200 for more than 1 minute | critical |
-| `HighErrorRate` | More than 5% of requests result in 5xx errors over a 5-minute window | warning |
-| `ServiceNotScraping` | Prometheus has not received metrics from a service for more than 2 minutes | warning |
+| Alert Name           | Condition                                                                  | Severity |
+| -------------------- | -------------------------------------------------------------------------- | -------- |
+| `ServiceDown`        | Any service's `/health` returns non-200 for more than 1 minute             | critical |
+| `HighErrorRate`      | More than 5% of requests result in 5xx errors over a 5-minute window       | warning  |
+| `ServiceNotScraping` | Prometheus has not received metrics from a service for more than 2 minutes | warning  |
 
 Requirements:
+
 - Rules must be loaded into Prometheus via the `prometheus.yml` config.
 - Each rule must include a human-readable `summary` and `description` annotation.
 - Document in your README how you tested that each alert fires correctly.
@@ -106,6 +112,7 @@ Requirements:
 **Deliverable:** Documentation in your README.
 
 Each service already logs to stdout. Your task:
+
 - Configure the Docker Compose log driver to write logs in JSON format.
 - Show a command a developer can run to:
   1. View live logs from all services at once.
@@ -143,24 +150,27 @@ Your final `README.md` must replace these instructions and cover:
 1. **Fork** this repository.
 2. Complete all five parts in your fork.
 3. Replace this README with your own documentation as outlined above.
-4. Submit your repo link via the [online form](https://forms.office.com/e/G6vaRQxWYM).
+4. Submit your repo link via the [online form](https://forms.cloud.microsoft/e/f3FF83LVz3).
 
 ---
 
 ## ⚠️ Pre-Submission Checklist
 
 ### Stack
+
 - [ ] `docker compose up --build` starts all services, Prometheus, and Grafana with no errors.
 - [ ] A `.env.example` file is committed; the real `.env` is not.
 - [ ] Prometheus `/targets` shows all three services as **UP**.
 - [ ] Grafana dashboard loads automatically without manual import.
 
 ### Alerts
+
 - [ ] All three alert rules are present in `prometheus/alerts.yml`.
 - [ ] Each rule has a `summary` and `description` annotation.
 - [ ] README explains how you tested each alert.
 
 ### Documentation
+
 - [ ] Architecture diagram is included.
 - [ ] Both log commands are documented with example output.
 - [ ] This README has been replaced with your own documentation.

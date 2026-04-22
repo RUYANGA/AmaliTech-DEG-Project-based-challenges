@@ -123,7 +123,7 @@ Describe what you added and why in your `DEPLOYMENT.md`.
 1. **Fork** this repository.
 2. Complete all three parts in your fork.
 3. **Replace this README** with your own documentation (architecture overview, setup steps, decisions made).
-4. Submit your repo link via the [online form](https://forms.office.com/e/G6vaRQxWYM).
+4. Submit your repo link via the [online form](https://forms.cloud.microsoft/e/f3FF83LVz3).
 
 ---
 

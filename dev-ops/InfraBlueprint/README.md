@@ -1,11 +1,12 @@
 # InfraBlueprint
+
 This challenge is designed to test your ability to define, provision, and manage cloud infrastructure as code — a foundational DevOps skill.
 
 ---
 
 ## 1. Business Context
 
-**Client:** Vela Payments  
+**Client:** Vela Payments
 **Industry:** Fintech — Payment processing for small businesses
 
 ### The Problem
@@ -62,6 +63,7 @@ All resources must live inside a **custom VPC** — not the default AWS VPC.
 **Deliverable:** Terraform resources for the VPC and subnets.
 
 Requirements:
+
 - [ ] A **VPC** with a CIDR block of `10.0.0.0/16`.
 - [ ] Two **public subnets** in different Availability Zones (for the EC2 instance).
 - [ ] Two **private subnets** in different Availability Zones (for the RDS instance).
@@ -76,6 +78,7 @@ Requirements:
 **Deliverable:** Terraform resources for the EC2 instance and its security group.
 
 Requirements:
+
 - [ ] A **Security Group** (`web-sg`) that allows:
   - Inbound HTTP on port 80 from `0.0.0.0/0`
   - Inbound HTTPS on port 443 from `0.0.0.0/0`
@@ -91,6 +94,7 @@ Requirements:
 **Deliverable:** Terraform resources for an RDS instance and its security group.
 
 Requirements:
+
 - [ ] A **Security Group** (`db-sg`) that allows inbound traffic on port 5432 (PostgreSQL) **only from `web-sg`** — not from the internet.
 - [ ] An **RDS instance** (`db.t3.micro`, PostgreSQL 15) in the private subnets.
 - [ ] The database username and password must be passed in as **Terraform variables**. They must never appear as default values in the code.
@@ -105,6 +109,7 @@ Requirements:
 **Deliverable:** Terraform resources for an S3 bucket.
 
 Requirements:
+
 - [ ] An **S3 bucket** for static assets.
 - [ ] **Block all public access** on the bucket — it should only be reachable from the EC2 instance's IAM role.
 - [ ] **Versioning** enabled on the bucket.
@@ -117,6 +122,7 @@ Requirements:
 **Deliverable:** `variables.tf`, `outputs.tf`, and a `backend` configuration.
 
 Requirements:
+
 - [ ] Define all configurable values (region, CIDR blocks, your IP, DB credentials, bucket name) in `variables.tf` with descriptions. Provide an `example.tfvars` file with placeholder values.
 - [ ] Define the following **outputs** in `outputs.tf`:
   - EC2 instance public IP
@@ -167,13 +173,14 @@ Your final `README.md` must replace these instructions and cover:
 1. **Fork** this repository.
 2. Complete all five parts in your fork.
 3. Replace this README with your own documentation as outlined above.
-4. Submit your repo link via the [online form](https://forms.office.com/e/G6vaRQxWYM).
+4. Submit your repo link via the [online form](https://forms.cloud.microsoft/e/f3FF83LVz3).
 
 ---
 
 ## ⚠️ Pre-Submission Checklist
 
 ### Code
+
 - [ ] `terraform init && terraform plan -var-file="example.tfvars"` completes with no errors.
 - [ ] No AWS credentials, passwords, or real IP addresses are committed to the repository.
 - [ ] `example.tfvars` is committed; any real `.tfvars` files with actual values are in `.gitignore`.
@@ -181,6 +188,7 @@ Your final `README.md` must replace these instructions and cover:
 - [ ] SSH access is locked to a variable (not `0.0.0.0/0`).
 
 ### Documentation
+
 - [ ] Architecture diagram is included.
 - [ ] Variable reference table is present.
 - [ ] Backend setup instructions are clear enough for a reviewer to follow.

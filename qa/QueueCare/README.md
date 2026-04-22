@@ -1,4 +1,5 @@
 # QueueCare-QA
+
 # 🏥 QueueCare — Technical Assessment
 
 > **QA Engineering Challenge: Build It. Then Break It.**
@@ -20,11 +21,13 @@ This is intentional. Real QA engineers understand systems well enough to break t
 Build a simplified clinic appointment system with the following features:
 
 #### 🔐 Authentication
+
 - Register a new user (name, email, password, role)
 - Login and receive a token (JWT or session-based)
 - Protect all endpoints — unauthenticated requests must be rejected
 
 #### 📅 Appointment Management (CRUD)
+
 - Create an appointment
 - View all appointments
 - View a single appointment by ID
@@ -32,11 +35,13 @@ Build a simplified clinic appointment system with the following features:
 - Cancel / delete an appointment
 
 #### ⏱️ Queue Logic
+
 - Automatically assign a queue number when a booking is created
 - View today's queue ordered by queue number
 - Allow staff to mark a patient as served
 
 #### 🔒 Role-Based Authorization
+
 - **Patient** — can only manage their own appointments
 - **Staff / Admin** — can view and manage all appointments, and mark patients as served
 
@@ -53,6 +58,7 @@ Write automated tests against the application you just built. You are testing yo
 You must cover all three categories:
 
 **Happy Path**
+
 - Register → Login → receive valid token
 - Create appointment → verify queue number is assigned
 - Fetch all appointments → verify role-based filtering works
@@ -60,6 +66,7 @@ You must cover all three categories:
 - Staff marks patient as served → verify status updates
 
 **Negative Cases**
+
 - Login with wrong password → expect `401`
 - Login with non-existent email → expect `401`
 - Create appointment with missing fields → expect `400`
@@ -70,6 +77,7 @@ You must cover all three categories:
 - Fetch appointment with non-existent ID → expect `404`
 
 **Edge Cases**
+
 - Book an appointment in the past → should be rejected
 - Duplicate booking on the same day for the same patient → should be rejected
 - Invalid date format submitted → should return a clear error
@@ -95,13 +103,13 @@ Automate the following flows through the browser:
 
 Write a short, honest report. This is not a formality — we read it carefully.
 
-| Section | What to Cover |
-|---|---|
-| **What You Built** | Your stack, architecture, and key decisions |
-| **What You Tested** | Which parts you covered and which you skipped, and why |
-| **What You Automated** | Which scenarios are automated vs manual, and why you drew that line |
-| **Bugs Found** | Any bugs or unexpected behaviour you found in your own system |
-| **What You Would Improve** | Given more time — what would you test, fix, or refactor |
+| Section                    | What to Cover                                                       |
+| -------------------------- | ------------------------------------------------------------------- |
+| **What You Built**         | Your stack, architecture, and key decisions                         |
+| **What You Tested**        | Which parts you covered and which you skipped, and why              |
+| **What You Automated**     | Which scenarios are automated vs manual, and why you drew that line |
+| **Bugs Found**             | Any bugs or unexpected behaviour you found in your own system       |
+| **What You Would Improve** | Given more time — what would you test, fix, or refactor             |
 
 > ⚠️ **Strong candidates find bugs in their own systems.** If your report says "no bugs found", that is almost always a sign of incomplete testing — not perfect code.
 
@@ -112,45 +120,51 @@ Write a short, honest report. This is not a formality — we read it carefully.
 Use whatever you know best. The following are suggestions only.
 
 ### Backend
-| Option | Notes |
-|---|---|
-| Node.js + Express | Fast setup, large ecosystem |
-| Python + FastAPI | Built-in validation, auto docs |
-| Python + Flask | Lightweight, minimal boilerplate |
-| Java + Spring Boot | Strongly typed, good if you know Java |
-| Go + Gin / Fiber | Fast, good to demonstrate Go experience |
-| Ruby on Rails | Rapid development |
-| PHP + Laravel | Mature web API ecosystem |
+
+| Option             | Notes                                   |
+| ------------------ | --------------------------------------- |
+| Node.js + Express  | Fast setup, large ecosystem             |
+| Python + FastAPI   | Built-in validation, auto docs          |
+| Python + Flask     | Lightweight, minimal boilerplate        |
+| Java + Spring Boot | Strongly typed, good if you know Java   |
+| Go + Gin / Fiber   | Fast, good to demonstrate Go experience |
+| Ruby on Rails      | Rapid development                       |
+| PHP + Laravel      | Mature web API ecosystem                |
 
 ### Database
-| Option | Notes |
-|---|---|
-| SQLite | Zero setup, file-based, perfect for assessments |
-| PostgreSQL | Production-grade, widely supported |
-| MongoDB | Flexible schema, easy to start |
+
+| Option                | Notes                                                 |
+| --------------------- | ----------------------------------------------------- |
+| SQLite                | Zero setup, file-based, perfect for assessments       |
+| PostgreSQL            | Production-grade, widely supported                    |
+| MongoDB               | Flexible schema, easy to start                        |
 | In-memory (array/map) | Simplest option — perfectly valid for this assessment |
 
 ### API Testing
-| Tool | Language |
-|---|---|
-| Jest + Supertest | JavaScript |
-| Pytest + Requests / HTTPX | Python |
-| RestAssured | Java |
-| Postman + Newman | Any — GUI + CLI runner |
-| Playwright (API mode) | JavaScript / Python / Java |
-| Karate DSL | Any — Gherkin-style |
+
+| Tool                      | Language                   |
+| ------------------------- | -------------------------- |
+| Jest + Supertest          | JavaScript                 |
+| Pytest + Requests / HTTPX | Python                     |
+| RestAssured               | Java                       |
+| Postman + Newman          | Any — GUI + CLI runner     |
+| Playwright (API mode)     | JavaScript / Python / Java |
+| Karate DSL                | Any — Gherkin-style        |
 
 ### UI Automation
-| Tool | Language |
-|---|---|
-| Playwright | JavaScript / Python / Java — recommended |
-| Cypress | JavaScript |
-| Selenium WebDriver | Java / Python |
-| Puppeteer | JavaScript |
-| Robot Framework | Python |
+
+| Tool               | Language                                 |
+| ------------------ | ---------------------------------------- |
+| Playwright         | JavaScript / Python / Java — recommended |
+| Cypress            | JavaScript                               |
+| Selenium WebDriver | Java / Python                            |
+| Puppeteer          | JavaScript                               |
+| Robot Framework    | Python                                   |
 
 ### Frontend
+
 Plain HTML + JavaScript is completely fine. Other options:
+
 - React.js or Vue.js if you prefer a structured frontend
 - Server-side templates (Jinja, EJS, Thymeleaf, Blade)
 - No UI at all — a documented Postman collection is acceptable
@@ -159,9 +173,9 @@ Plain HTML + JavaScript is completely fine. Other options:
 
 ## Deliverables
 
-
 - [ ] `README.md` — instructions to install, run, and test everything from scratch
 - [ ] `TEST_REPORT.md` — your written test report
+- Submission link: https://forms.cloud.microsoft/e/vU0px4a5du
 
 ### Your README Must Include
 
@@ -181,11 +195,11 @@ Plain HTML + JavaScript is completely fine. Other options:
 
 We are not just checking whether the tests pass.
 
-| Dimension | What We Look For |
-|---|---|
-| **Engineering Quality** | Clean, readable code. Sensible structure. Simple is better than clever. |
-| **QA Thinking** | Test coverage depth. Identification of edge cases and real failure modes. |
-| **Automation Skills** | Stable, well-structured tests. Good assertions. Reusable helpers. |
+| Dimension                | What We Look For                                                                 |
+| ------------------------ | -------------------------------------------------------------------------------- |
+| **Engineering Quality**  | Clean, readable code. Sensible structure. Simple is better than clever.          |
+| **QA Thinking**          | Test coverage depth. Identification of edge cases and real failure modes.        |
+| **Automation Skills**    | Stable, well-structured tests. Good assertions. Reusable helpers.                |
 | **Honesty & Reflection** | Accurate test report. Self-found bugs documented. Realistic coverage assessment. |
 
 ---
@@ -199,4 +213,4 @@ We are not just checking whether the tests pass.
 
 ---
 
-*Good luck. Build something you are proud to explain.*
+_Good luck. Build something you are proud to explain._
