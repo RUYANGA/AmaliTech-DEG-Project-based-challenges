@@ -52,25 +52,25 @@ Flowchart (high-level):
 
 ```mermaid
 ```mermaid
-flowchart TD
+graph TD
   A["Incoming POST /process-payment"]
   B{"Has Idempotency-Key header?"}
   C["Return 400 Bad Request"]
   D{"Key exists in DB?"}
   E["Compare payload hash"]
-  F["Return 409/422 - Key reused with different payload"]
-  G["If status=processing → wait"]
+  F["Return 409 or 422 - Key reused with different payload"]
+  G["If status = processing, wait"]
   H["Return stored response (X-Cache-Hit: true)"]
   I["Process payment (simulate 2s) and store response"]
-  A-->B
-  B-->|no|C
-  B-->|yes|D
-  D-->|no|I
-  D-->|yes|E
-  E-->|different|F
-  E-->|same & completed|H
-  E-->|same & processing|G
-  G-->H
+  A --> B
+  B -- "no" --> C
+  B -- "yes" --> D
+  D -- "no" --> I
+  D -- "yes" --> E
+  E -- "different" --> F
+  E -- "same & completed" --> H
+  E -- "same & processing" --> G
+  G --> H
 ```
 
 Getting started
