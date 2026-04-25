@@ -82,29 +82,6 @@ Environment (example):
 - `DATABASE_URL=postgresql://user:password@localhost:5432/idempotency_db`
 - `PORT=8000`
 
-Install and run (example with FastAPI):
-
-```bash
-python -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-
-# create table (example)
-psql $DATABASE_URL -c "CREATE TABLE IF NOT EXISTS idempotency_records (
-  id SERIAL PRIMARY KEY,
-  idempotency_key TEXT UNIQUE NOT NULL,
-  payload_hash TEXT NOT NULL,
-  status TEXT NOT NULL,
-  response_body JSONB,
-  response_status INT,
-  created_at TIMESTAMPTZ DEFAULT now(),
-  updated_at TIMESTAMPTZ DEFAULT now(),
-  expires_at TIMESTAMPTZ NULL
-);"
-
-uvicorn main:app --host 0.0.0.0 --port ${PORT:-8000} --reload
-```
-
 Platform-specific run
 ---------------------
 Linux / macOS (recommended):
