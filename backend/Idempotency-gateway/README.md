@@ -105,6 +105,34 @@ psql $DATABASE_URL -c "CREATE TABLE IF NOT EXISTS idempotency_records (
 uvicorn main:app --host 0.0.0.0 --port ${PORT:-8000} --reload
 ```
 
+Platform-specific run
+---------------------
+Linux / macOS (recommended):
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+# run server
+.venv/bin/python -m uvicorn main:app --host 127.0.0.1 --port 8000 --reload
+```
+
+Windows (PowerShell):
+
+```powershell
+python -m venv .venv
+. .venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+# run server
+.venv\Scripts\python -m uvicorn main:app --host 127.0.0.1 --port 8000 --reload
+```
+
+Local API docs
+--------------
+- Swagger UI (interactive): http://127.0.0.1:8000/docs
+
+
+
 API
 ---
 POST /process-payment
