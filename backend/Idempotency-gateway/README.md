@@ -51,16 +51,17 @@ sequenceDiagram
 Flowchart (high-level):
 
 ```mermaid
+```mermaid
 flowchart TD
-  A[Incoming POST /process-payment]
-  B{Has Idempotency-Key header?}
-  C[Return 400 Bad Request]
-  D{Key exists in DB?}
-  E[Compare payload hash]
-  F[Return 409/422 - Key reused with different payload]
-  G[If status=processing → wait]
-  H[Return stored response (X-Cache-Hit: true)]
-  I[Process payment (simulate 2s) and store response]
+  A["Incoming POST /process-payment"]
+  B{"Has Idempotency-Key header?"}
+  C["Return 400 Bad Request"]
+  D{"Key exists in DB?"}
+  E["Compare payload hash"]
+  F["Return 409/422 - Key reused with different payload"]
+  G["If status=processing → wait"]
+  H["Return stored response (X-Cache-Hit: true)"]
+  I["Process payment (simulate 2s) and store response"]
   A-->B
   B-->|no|C
   B-->|yes|D
