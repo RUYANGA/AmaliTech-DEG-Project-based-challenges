@@ -51,7 +51,6 @@ sequenceDiagram
 Flowchart (high-level):
 
 ```mermaid
-```mermaid
 graph TD
   A["Incoming POST /process-payment"]
   B{"Has Idempotency-Key header?"}
