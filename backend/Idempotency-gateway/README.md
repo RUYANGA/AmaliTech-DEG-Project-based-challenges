@@ -183,8 +183,5 @@ Pre-submission checklist
 - [ ] Remove sensitive files (node_modules, .env with secrets, etc.)
 - [ ] Server starts with documented commands
 
-Next steps
-- I can add a minimal FastAPI example, migration script, and a small test harness on request.
 
----
 *End of README*
